@@ -25,12 +25,17 @@ public class PlayerController : MonoBehaviour
     public bool invertX;
     public bool invertY;
 
+    public ObjetosMano activeObjeto;
+    public List<ObjetosMano> allObjects = new List<ObjetosMano>();
+    public int currentObject;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        activeObjeto = allObjects[currentObject];
+        activeObjeto.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -40,7 +45,7 @@ public class PlayerController : MonoBehaviour
         //Guardar Y velocity
         float yStore = moveInput.y;
 
-        //Movimiento básico del jugador
+        //Movimiento bï¿½sico del jugador
 
         Vector3 vertMove = transform.forward * Input.GetAxis("Vertical");
         Vector3 horiMove = transform.right * Input.GetAxis("Horizontal");
@@ -79,7 +84,7 @@ public class PlayerController : MonoBehaviour
         charCon.Move(moveInput * Time.deltaTime);
 
 
-        //Control rotación cámara
+        //Control rotaciï¿½n cï¿½mara
         Vector2 mouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")) * mouseSensitivity;
 
         if (invertX) { mouseInput.x = -mouseInput.x; }
@@ -88,8 +93,29 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + mouseInput.x, transform.rotation.eulerAngles.z);
         camTrans.rotation = Quaternion.Euler(camTrans.rotation.eulerAngles + new Vector3(-mouseInput.y, 0f, 0f));
 
+        if(Input.GetButtonDown("Switch Object"))
+        {
+            SwitchObject();
+        }
+
         //Movimiento de la camara (Bobbing)
         anim.SetFloat("moveSpeed", moveInput.magnitude);
         anim.SetBool("onGround", canJump);
+    }
+
+    //Cambiar de objeto
+    public void SwitchObject() 
+    {
+        activeObjeto.gameObject.SetActive(false);
+
+        currentObject++;
+
+        if(currentObject >= allObjects.Count)
+        {
+            currentObject = 0;
+        }
+
+        activeObjeto = allObjects[currentObject];
+        activeObjeto.gameObject.SetActive(true);
     }
 }
