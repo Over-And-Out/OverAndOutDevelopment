@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
 
 public class FirtsPersonController : MonoBehaviour
@@ -19,6 +20,7 @@ public class FirtsPersonController : MonoBehaviour
     [SerializeField] private bool canCrouch = true;
     [SerializeField] private bool canUseHeadbob = true;
     [SerializeField] private bool canInteract = true;
+    [SerializeField] private bool useFootsteps = true;
 
     [Header("Controls")]
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
@@ -73,6 +75,18 @@ public class FirtsPersonController : MonoBehaviour
     [SerializeField] private LayerMask interactionLayer = default;
     private Interactable currentInteractable;
 
+    [Header("Footstep Parameters")]
+    [SerializeField] private float baseStepSpeed = 0.5f;
+    [SerializeField] private float crouchStepMultiplier = 1.5f;
+    [SerializeField] private float sprintStepMultiplier = 0.6f;
+    [SerializeField] private AudioSource footstepAudioSource = default;
+    [SerializeField] private AudioClip[] woodClips = default;
+    [SerializeField] private AudioClip[] metalClips = default;
+    [SerializeField] private AudioClip[] grassClips = default;
+    [SerializeField] private AudioClip[] concreteClips = default;
+    private float footstepTimer = 0;
+    private float GetCurrentOffset => isCrouching ? baseStepSpeed * crouchStepMultiplier : IsSprinting ? baseStepSpeed * sprintStepMultiplier : baseStepSpeed;
+
     void Awake()
     {
         playerCamera = GetComponentInChildren<Camera>();
@@ -100,6 +114,9 @@ public class FirtsPersonController : MonoBehaviour
             if (canUseHeadbob)
                 HandleHeadbob();
 
+            if (useFootsteps)
+                HandleFootsteps();
+
             if (canInteract)
             {
                 HandleInteractionCheck();
@@ -107,6 +124,42 @@ public class FirtsPersonController : MonoBehaviour
             }
 
             ApplyMovements();
+        }
+    }
+
+    private void HandleFootsteps()
+    {
+        if (!controller.isGrounded) return; // No esta en el suelo
+        if (currentInput == Vector2.zero) return; // No hay movimiento
+
+        footstepTimer -= Time.deltaTime;
+
+        if (footstepTimer <= 0)
+        {
+            // Comprobamos posicion inferior jugador
+            if (Physics.Raycast(playerCamera.transform.position, Vector3.down, out RaycastHit hit, 3))
+            {
+                switch (hit.collider.tag)
+                {
+                    case "Footsteps/WOOD":
+                        footstepAudioSource.PlayOneShot(woodClips[Random.Range(0, woodClips.Length - 1)]);
+                        break;
+                    case "Footsteps/GRASS":
+                        footstepAudioSource.PlayOneShot(grassClips[Random.Range(0, grassClips.Length - 1)]);
+                        break;
+                    case "Footsteps/METAL":
+                        footstepAudioSource.PlayOneShot(metalClips[Random.Range(0, metalClips.Length - 1)]);
+                        break;
+                    case "Footsteps/CONCRETE":
+                        footstepAudioSource.PlayOneShot(concreteClips[Random.Range(0, concreteClips.Length - 1)]);
+                        break;
+                    default:
+                        footstepAudioSource.PlayOneShot(woodClips[Random.Range(0, woodClips.Length - 1)]);
+                        break;
+                }
+            }
+
+            footstepTimer = GetCurrentOffset;
         }
     }
 
