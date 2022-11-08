@@ -750,6 +750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 53938942}
   - component: {fileID: 53938943}
+  - component: {fileID: 53938941}
   m_Layer: 0
   m_Name: Linterna
   m_TagString: Lantern
@@ -3807,7 +3808,6 @@ GameObject:
   - component: {fileID: 654280888}
   - component: {fileID: 654280887}
   - component: {fileID: 654280890}
-  - component: {fileID: 654280892}
   - component: {fileID: 654280893}
   m_Layer: 8
   m_Name: Main Camera
@@ -3895,67 +3895,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1893963199}
---- !u!114 &654280892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654280886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49b466852cd702e48be644363c154252, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lanternPosition: {fileID: 0}
-  lantern: {fileID: 0}
-  canSprint: 1
-  canCrouch: 1
-  canUseHeadbob: 1
-  canInteract: 1
-  useFootsteps: 1
-  sprintKey: 304
-  crouchKey: 99
-  interactKey: 101
-  activeObjeto: {fileID: 0}
-  allObjects: []
-  currentObject: 0
-  walkSpeed: 3
-  gravityMultiplier: 30
-  sprintSpeed: 6
-  crouchSpeed: 1.5
-  lookSpeedX: 2
-  lookSpeedY: 2
-  upperLookLimit: 80
-  lowerLookLimit: 80
-  maxHealth: 2
-  timeBeforeRegenStarts: 100
-  healthValueIncrement: 3
-  healthTimeIncrement: 0.1
-  crouchHeight: 0.5
-  standingHeight: 2
-  timeToCrouch: 0.25
-  crouchingCenter: {x: 0, y: 0.5, z: 0}
-  standingCenter: {x: 0, y: 0, z: 0}
-  walkBobSpeed: 14
-  walkBobAmount: 0.05
-  sprintBobSpeed: 18
-  sprintBobAmount: 0.11
-  crouchBobSpeed: 8
-  crouchBobAmount: 0.025
-  interactionRayPoint: {x: 0, y: 0, z: 0}
-  interactionDistance: 0
-  interactionLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  baseStepSpeed: 0
-  crouchStepMultiplier: 0.5
-  sprintStepMultiplier: 0.6
-  footstepAudioSource: {fileID: 0}
-  woodClips: []
-  metalClips: []
-  grassClips: []
-  concreteClips: []
 --- !u!114 &654280893
 MonoBehaviour:
   m_ObjectHideFlags: 0
