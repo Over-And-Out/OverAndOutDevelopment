@@ -27,11 +27,13 @@ public class FirtsPersonController : MonoBehaviour
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
     [SerializeField] private KeyCode crouchKey = KeyCode.C;
     [SerializeField] private KeyCode interactKey = KeyCode.E;
+    [SerializeField] private KeyCode useKey = KeyCode.F;
+    [SerializeField] private KeyCode switchObjectKey = KeyCode.Tab;
 
     [Header ("Object List")]
-    public ObjetosMano activeObjeto;
-    public List<ObjetosMano> allObjects = new List<ObjetosMano>();
-    public int currentObject;
+    [SerializeField] private HandItem activeObjeto;
+    [SerializeField] private List<HandItem> allObjects = default;
+    [SerializeField] private int currentObject;
 
 
     [Header("Movement Parameters")]
@@ -108,7 +110,14 @@ public class FirtsPersonController : MonoBehaviour
 
     void Start()
     {
-        activeObjeto = allObjects[currentObject];
+        if (currentObject > - 1 && currentObject < allObjects.Count)
+        {
+            activeObjeto = allObjects[currentObject];
+        } else
+        {
+            activeObjeto = allObjects[0];
+            currentObject = 0;
+        }
         activeObjeto.gameObject.SetActive(true);
     }
     private void OnEnable()
@@ -159,10 +168,37 @@ public class FirtsPersonController : MonoBehaviour
                 HandleInteractionInput();
             }
 
-            if(Input.GetButtonDown("Switch Object"))
-                SwitchObject();
+            HandleUseItem();
 
+            HandleSwitchObject();
+         
             ApplyMovements();
+        }
+    }
+
+    private void HandleUseItem()
+    {
+        if (Input.GetKeyDown(useKey))
+        {
+            activeObjeto.UseItem();
+        }
+    }
+
+    private void HandleSwitchObject()
+    {
+        if (Input.GetKeyDown(switchObjectKey))
+        {
+            activeObjeto.gameObject.SetActive(false);
+
+            currentObject++;
+
+            if (currentObject >= allObjects.Count)
+            {
+                currentObject = 0;
+            }
+
+            activeObjeto = allObjects[currentObject];
+            activeObjeto.gameObject.SetActive(true);
         }
     }
 
