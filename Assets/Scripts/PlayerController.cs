@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     public bool invertX;
     public bool invertY;
 
-    public ObjetosMano activeObjeto;
-    public List<ObjetosMano> allObjects = new List<ObjetosMano>();
+    public GameObject activeObjeto;
+    public List<GameObject> allObjects = new List<GameObject>();
     public int currentObject;
 
 

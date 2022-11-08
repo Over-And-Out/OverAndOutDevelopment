@@ -27,11 +27,12 @@ public class FirtsPersonController : MonoBehaviour
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
     [SerializeField] private KeyCode crouchKey = KeyCode.C;
     [SerializeField] private KeyCode interactKey = KeyCode.E;
+    [SerializeField] private KeyCode switchObjectKey = KeyCode.Tab;
 
     [Header ("Object List")]
-    public ObjetosMano activeObjeto;
-    public List<ObjetosMano> allObjects = new List<ObjetosMano>();
-    public int currentObject;
+    [SerializeField] private GameObject activeObjeto;
+    [SerializeField] private List<GameObject> allObjects = default;
+    [SerializeField] private int currentObject;
 
 
     [Header("Movement Parameters")]
@@ -108,9 +109,17 @@ public class FirtsPersonController : MonoBehaviour
 
     void Start()
     {
-        activeObjeto = allObjects[currentObject];
-        activeObjeto.gameObject.SetActive(true);
+        if (currentObject > - 1 && currentObject < allObjects.Count)
+        {
+            activeObjeto = allObjects[currentObject];
+        } else
+        {
+            activeObjeto = allObjects[0];
+            currentObject = 0;
+        }
+        activeObjeto.SetActive(true);
     }
+
     private void OnEnable()
     {
         OnTakeDamage += ApplyDamage;
@@ -159,11 +168,27 @@ public class FirtsPersonController : MonoBehaviour
                 HandleInteractionInput();
             }
 
-        if(Input.GetButtonDown("Switch Object"))
-        {
-            SwitchObject();
-        }    
+            HandleSwitchObject();
+         
             ApplyMovements();
+        }
+    }
+
+    private void HandleSwitchObject()
+    {
+        if (Input.GetKeyDown(switchObjectKey))
+        {
+            activeObjeto.SetActive(false);
+
+            currentObject++;
+
+            if (currentObject >= allObjects.Count)
+            {
+                currentObject = 0;
+            }
+
+            activeObjeto = allObjects[currentObject];
+            activeObjeto.SetActive(true);
         }
     }
 
@@ -368,21 +393,5 @@ public class FirtsPersonController : MonoBehaviour
         }
 
         regeneratingHealth = null; // Elimina referencia de la corrutina al terminar
-    }
-
-    //Cambiar de objeto en la mano (por defecto con TAB)
-    public void SwitchObject() 
-    {
-        activeObjeto.gameObject.SetActive(false);
-
-        currentObject++;
-
-        if(currentObject >= allObjects.Count)
-        {
-            currentObject = 0;
-        }
-
-        activeObjeto = allObjects[currentObject];
-        activeObjeto.gameObject.SetActive(true);
     }
 }
