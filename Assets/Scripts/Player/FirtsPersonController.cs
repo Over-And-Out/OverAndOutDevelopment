@@ -8,7 +8,7 @@ public class FirtsPersonController : MonoBehaviour
 {
     // Propiedad para ver si el jugador se puede mover
     public bool CanMove { get; private set; } = true;
-    // Propiedad para controlar si el jugador está esprintando
+    // Propiedad para controlar si el jugador estï¿½ esprintando
     public bool IsSprinting => canSprint && Input.GetKey(sprintKey);
     public bool ShouldCrouch => Input.GetKeyDown(crouchKey) && !duringCrouchAnimation && controller.isGrounded;
 
@@ -27,6 +27,12 @@ public class FirtsPersonController : MonoBehaviour
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
     [SerializeField] private KeyCode crouchKey = KeyCode.C;
     [SerializeField] private KeyCode interactKey = KeyCode.E;
+
+    [Header ("Object List")]
+    public ObjetosMano activeObjeto;
+    public List<ObjetosMano> allObjects = new List<ObjetosMano>();
+    public int currentObject;
+
 
     [Header("Movement Parameters")]
     [SerializeField] private float walkSpeed = 3.0f;
@@ -100,6 +106,11 @@ public class FirtsPersonController : MonoBehaviour
     private float footstepTimer = 0;
     private float GetCurrentOffset => isCrouching ? baseStepSpeed * crouchStepMultiplier : IsSprinting ? baseStepSpeed * sprintStepMultiplier : baseStepSpeed;
 
+    void Start()
+    {
+        activeObjeto = allObjects[currentObject];
+        activeObjeto.gameObject.SetActive(true);
+    }
     private void OnEnable()
     {
         OnTakeDamage += ApplyDamage;
@@ -148,6 +159,10 @@ public class FirtsPersonController : MonoBehaviour
                 HandleInteractionInput();
             }
 
+        if(Input.GetButtonDown("Switch Object"))
+        {
+            SwitchObject();
+        }    
             ApplyMovements();
         }
     }
@@ -216,7 +231,7 @@ public class FirtsPersonController : MonoBehaviour
 
     private void HandleInteractionCheck()
     {
-        // Comprueba todos los colliders dentro del punto de visión y de la distancia
+        // Comprueba todos los colliders dentro del punto de visiï¿½n y de la distancia
         if (Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hit, interactionDistance))
         {
             // Si el objeto esta en la capa definida para las interacciones se guarda
@@ -239,7 +254,7 @@ public class FirtsPersonController : MonoBehaviour
 
     private void HandleInteractionInput()
     {
-        // Comprueba tecla de interacción y que el objeto se encuentre a la distancia definida
+        // Comprueba tecla de interacciï¿½n y que el objeto se encuentre a la distancia definida
         if (Input.GetKeyDown(interactKey) && currentInteractable != null && Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hit, interactionDistance, interactionLayer))
         {
             currentInteractable.OnInteract();
@@ -251,10 +266,10 @@ public class FirtsPersonController : MonoBehaviour
         // Actualiza movimiento con el Input del jugador
         currentInput = new Vector2((isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Vertical"), (isCrouching ? crouchSpeed : IsSprinting ? sprintSpeed : walkSpeed) * Input.GetAxis("Horizontal"));
 
-        // Guardamos la posicion del EjeY para que no sea modificada con la transformación
+        // Guardamos la posicion del EjeY para que no sea modificada con la transformaciï¿½n
         float moveDirectionY = moveDirection.y;
 
-        // Obtiene la dirección del movimiento del jugador
+        // Obtiene la direcciï¿½n del movimiento del jugador
         moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) +
             (transform.TransformDirection(Vector3.right) * currentInput.y);
 
@@ -263,20 +278,20 @@ public class FirtsPersonController : MonoBehaviour
 
     private void HandleMouseLook()
     {
-        // Rotación de la camara
+        // Rotaciï¿½n de la camara
         rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;
         rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
         lanternPosition.localRotation = Quaternion.Euler(rotationX, 0, 0);
 
-        // Rotación del jugador
+        // Rotaciï¿½n del jugador
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
     }
 
     private void HandleCrouch()
     {
         if (ShouldCrouch)
-            StartCoroutine(CrouchStand()); // Corruntina para actualizar la posición del jugador
+            StartCoroutine(CrouchStand()); // Corruntina para actualizar la posiciï¿½n del jugador
     }
 
     private void HandleHeadbob()
@@ -317,7 +332,7 @@ public class FirtsPersonController : MonoBehaviour
         Vector3 targetCenter = isCrouching ? standingCenter : crouchingCenter;
         Vector3 currentCenter = controller.center;
 
-        // Cada Frame se ejecuta la actualización del bucle
+        // Cada Frame se ejecuta la actualizaciï¿½n del bucle
         while (timeElapsed < timeToCrouch)
         {
             controller.height = Mathf.Lerp(currentHeight, targetHeight, timeElapsed / timeToCrouch);
@@ -326,7 +341,7 @@ public class FirtsPersonController : MonoBehaviour
             yield return null;
         }
 
-        // Actualización final tras pasar el tiempo determinado
+        // Actualizaciï¿½n final tras pasar el tiempo determinado
         controller.height = targetHeight;
         controller.center = targetCenter;
 
@@ -353,5 +368,21 @@ public class FirtsPersonController : MonoBehaviour
         }
 
         regeneratingHealth = null; // Elimina referencia de la corrutina al terminar
+    }
+
+    //Cambiar de objeto en la mano (por defecto con TAB)
+    public void SwitchObject() 
+    {
+        activeObjeto.gameObject.SetActive(false);
+
+        currentObject++;
+
+        if(currentObject >= allObjects.Count)
+        {
+            currentObject = 0;
+        }
+
+        activeObjeto = allObjects[currentObject];
+        activeObjeto.gameObject.SetActive(true);
     }
 }
