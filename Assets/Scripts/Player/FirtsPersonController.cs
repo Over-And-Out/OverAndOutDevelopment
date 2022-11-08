@@ -27,11 +27,12 @@ public class FirtsPersonController : MonoBehaviour
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
     [SerializeField] private KeyCode crouchKey = KeyCode.C;
     [SerializeField] private KeyCode interactKey = KeyCode.E;
+    [SerializeField] private KeyCode useKey = KeyCode.F;
     [SerializeField] private KeyCode switchObjectKey = KeyCode.Tab;
 
     [Header ("Object List")]
-    [SerializeField] private GameObject activeObjeto;
-    [SerializeField] private List<GameObject> allObjects = default;
+    [SerializeField] private HandItem activeObjeto;
+    [SerializeField] private List<HandItem> allObjects = default;
     [SerializeField] private int currentObject;
 
 
@@ -117,7 +118,7 @@ public class FirtsPersonController : MonoBehaviour
             activeObjeto = allObjects[0];
             currentObject = 0;
         }
-        activeObjeto.SetActive(true);
+        activeObjeto.gameObject.SetActive(true);
     }
 
     private void OnEnable()
@@ -168,9 +169,19 @@ public class FirtsPersonController : MonoBehaviour
                 HandleInteractionInput();
             }
 
+            HandleUseItem();
+
             HandleSwitchObject();
          
             ApplyMovements();
+        }
+    }
+
+    private void HandleUseItem()
+    {
+        if (Input.GetKeyDown(useKey))
+        {
+            activeObjeto.UseItem();
         }
     }
 
@@ -178,7 +189,7 @@ public class FirtsPersonController : MonoBehaviour
     {
         if (Input.GetKeyDown(switchObjectKey))
         {
-            activeObjeto.SetActive(false);
+            activeObjeto.gameObject.SetActive(false);
 
             currentObject++;
 
@@ -188,7 +199,7 @@ public class FirtsPersonController : MonoBehaviour
             }
 
             activeObjeto = allObjects[currentObject];
-            activeObjeto.SetActive(true);
+            activeObjeto.gameObject.SetActive(true);
         }
     }
 
