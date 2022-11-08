@@ -120,7 +120,6 @@ public class FirtsPersonController : MonoBehaviour
         }
         activeObjeto.gameObject.SetActive(true);
     }
-
     private void OnEnable()
     {
         OnTakeDamage += ApplyDamage;
@@ -404,5 +403,21 @@ public class FirtsPersonController : MonoBehaviour
         }
 
         regeneratingHealth = null; // Elimina referencia de la corrutina al terminar
+    }
+
+    //Cambiar de objeto en la mano (por defecto con TAB)
+    public void SwitchObject() 
+    {
+        activeObjeto.gameObject.SetActive(false);
+
+        currentObject++;
+
+        if(currentObject >= allObjects.Count)
+        {
+            currentObject = 0;
+        }
+
+        activeObjeto = allObjects[currentObject];
+        activeObjeto.gameObject.SetActive(true);
     }
 }
