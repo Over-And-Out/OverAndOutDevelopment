@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuPrincipal.unity
     guid: 9633ec9a94294e440b75ff813145456f
+  - enabled: 1
+    path: Assets/Scenes/PruebaMonstruo.unity
+    guid: 3a5c2a5a352886b49af4a8043e6d0da6
   m_configObjects: {}
