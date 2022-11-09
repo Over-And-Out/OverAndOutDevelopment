@@ -3126,7 +3126,7 @@ MonoBehaviour:
   baseStepSpeed: 0.5
   crouchStepMultiplier: 1.5
   sprintStepMultiplier: 0.6
-  footstepAudioSource: {fileID: 7245556597430826032}
+  playerAudioSource: {fileID: 7245556597430826032}
   woodClips:
   - {fileID: 8300000, guid: 58f44e9df3c1ab94784e9bc6a9c0b49e, type: 3}
   - {fileID: 8300000, guid: d57cbe57a92e93046bdb643d965134a9, type: 3}
@@ -3144,6 +3144,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0ed339525c114634f9b4fc5a6d4f73c7, type: 3}
   - {fileID: 8300000, guid: 7bd8692aabe555a4481a7c4b92794dbc, type: 3}
   - {fileID: 8300000, guid: 8781938137d18ad4ea0b187a69f2f0af, type: 3}
+  lanternClick: {fileID: 8300000, guid: d26aea48d6a3c0d44adc0923c1321161, type: 3}
 --- !u!82 &7245556597430826032
 AudioSource:
   m_ObjectHideFlags: 0

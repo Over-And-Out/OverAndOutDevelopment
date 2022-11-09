@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class HandItem : MonoBehaviour
 {
-    public abstract void UseItem();
+    public abstract void UseItem(FirtsPersonController player);
 }

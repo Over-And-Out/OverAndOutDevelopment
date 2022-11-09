@@ -10,11 +10,12 @@ public class HandLanternItem : HandItem
         lanternLight = GetComponentInChildren<Light>();
     }
 
-    public override void UseItem()
+    public override void UseItem(FirtsPersonController player)
     {
         if (lanternLight)
         {
             lanternLight.enabled = !lanternLight.enabled;
+            player.PlayerAudioSource.PlayOneShot(player.LanternClick);
         }
     }
 }
