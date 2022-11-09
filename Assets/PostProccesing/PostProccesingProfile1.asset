@@ -18,10 +18,10 @@ MonoBehaviour:
     value: 1
   shutterAngle:
     overrideState: 1
-    value: 247
+    value: 230
   sampleCount:
     overrideState: 1
-    value: 20
+    value: 21
 --- !u!114 &-8053054521197556975
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -40,13 +40,13 @@ MonoBehaviour:
     value: 1
   filtering:
     overrideState: 1
-    value: {x: 50, y: 95}
+    value: {x: 53.999992, y: 99}
   minLuminance:
     overrideState: 1
-    value: 1.2
+    value: 0.9
   maxLuminance:
     overrideState: 1
-    value: 5.1
+    value: 2.5
   keyValue:
     overrideState: 0
     value: 1
@@ -156,7 +156,7 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: 13
+    value: 23
   tint:
     overrideState: 1
     value: 11
@@ -168,7 +168,7 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 1
-    value: -47
+    value: -44
   brightness:
     overrideState: 0
     value: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
     value: 0
   contrast:
     overrideState: 1
-    value: 8
+    value: 28
   mixerRedOutRedIn:
     overrideState: 0
     value: 100
@@ -1512,7 +1512,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 1
+    value: 30
   intensityX:
     overrideState: 0
     value: 1
@@ -1552,7 +1552,7 @@ MonoBehaviour:
     value: 2.07
   softKnee:
     overrideState: 1
-    value: 0.63
+    value: 0.761
   clamp:
     overrideState: 1
     value: 65472.32
@@ -1596,7 +1596,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.45
+    value: 0.65
   color:
     overrideState: 0
     value: {r: 0, g: 0, b: 0, a: 1}
@@ -1614,7 +1614,7 @@ MonoBehaviour:
     value: -12
   thicknessModifier:
     overrideState: 1
-    value: 2.26
+    value: 3.73
   directLightingStrength:
     overrideState: 0
     value: 0
@@ -1646,7 +1646,7 @@ MonoBehaviour:
     defaultState: 1
   intensity:
     overrideState: 1
-    value: 0.704
+    value: 0.576
   fastMode:
     overrideState: 1
     value: 1
@@ -1668,7 +1668,7 @@ MonoBehaviour:
     value: 1
   preset:
     overrideState: 1
-    value: 2
+    value: 5
   maximumIterationCount:
     overrideState: 0
     value: 16
@@ -1683,7 +1683,7 @@ MonoBehaviour:
     value: 100
   distanceFade:
     overrideState: 1
-    value: 0.5
+    value: 0.464
   vignette:
     overrideState: 1
-    value: 0.5
+    value: 0.493
