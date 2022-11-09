@@ -44,7 +44,7 @@ public class MonsterBehaviour : MonoBehaviour
                     visionTrasera.playerDetected){
                     State = MonsterStates.Persiguiendo;
                  }else{
-                    if(Vector3.Distance(transform.position, target) < 1)
+                    if(Vector3.Distance(transform.position, target) < 2)
                     {
                         if(UnityEngine.Random.Range(0,2) == 0) agent.speed = walkSpeed;
                         else agent.speed = runSpeed;
