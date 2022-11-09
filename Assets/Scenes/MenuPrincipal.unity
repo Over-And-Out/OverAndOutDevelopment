@@ -2132,7 +2132,7 @@ PrefabInstance:
     - target: {fileID: -7918335002988649766, guid: 1ff8144f1e17009498597cecb4eb8c13, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5231ce3ff965f014b8711bde62a38dc8, type: 2}
+      objectReference: {fileID: 2100000, guid: 77d3a536354d7074986bf78fd474a6ee, type: 2}
     - target: {fileID: -7670361684616520955, guid: 1ff8144f1e17009498597cecb4eb8c13, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -3111,7 +3111,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864508498}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
