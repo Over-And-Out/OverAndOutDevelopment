@@ -313,14 +313,17 @@ public class FirtsPersonController : MonoBehaviour
 
     private void HandleMouseLook()
     {
-        // Rotaci�n de la camara
-        rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;
-        rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
-        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        lanternPosition.localRotation = Quaternion.Euler(rotationX, 0, 0);
+        if (Time.timeScale != 0f)
+        {
+            // Rotaci�n de la camara
+            rotationX -= Input.GetAxis("Mouse Y") * lookSpeedY;
+            rotationX = Mathf.Clamp(rotationX, -upperLookLimit, lowerLookLimit);
+            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+            lanternPosition.localRotation = Quaternion.Euler(rotationX, 0, 0);
 
-        // Rotaci�n del jugador
-        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
+            // Rotaci�n del jugador
+            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedX, 0);
+        }
     }
 
     private void HandleCrouch()
