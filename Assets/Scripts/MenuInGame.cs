@@ -9,6 +9,11 @@ public class MenuInGame : MonoBehaviour
 
     public static bool GameIsPaused = false;
 
+    void Start()
+    {
+        Resume();
+    }
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -26,6 +31,7 @@ public class MenuInGame : MonoBehaviour
 
     public void Resume()
     {
+
         Cursor.lockState = CursorLockMode.Locked;
         inGameMenu.SetActive(false);
         Time.timeScale = 1f;
