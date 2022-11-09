@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableLantern : Interactable
+public class InteractableWalkie : Interactable
 {
     public override void OnFocus()
     {
@@ -11,26 +11,26 @@ public class InteractableLantern : Interactable
 
     public override void OnInteract(GameObject itemsContainer, ref List<HandItem> allPlayerObjects)
     {
-        if (!CheckLanternInPlayer(allPlayerObjects))
+        if (!CheckWalkieInPlayer(allPlayerObjects))
         {
-            GameObject lantern = Instantiate(prefab) as GameObject;
-            HandLanternItem itemToAdd = lantern.GetComponent<HandLanternItem>();
+            GameObject walkie = Instantiate(prefab) as GameObject;
+            HandWalkieItem itemToAdd = walkie.GetComponent<HandWalkieItem>();
 
-            lantern.transform.parent = itemsContainer.transform;
-            lantern.gameObject.transform.localPosition = itemPosition;
-            lantern.transform.localRotation = itemRotation;
-            lantern.SetActive(false);
+            walkie.transform.parent = itemsContainer.transform;
+            walkie.gameObject.transform.localPosition = itemPosition;
+            walkie.transform.localRotation = itemRotation;
+            walkie.SetActive(false);
 
             Destroy(this.gameObject);
             allPlayerObjects.Add(itemToAdd);
         }
     }
 
-    private bool CheckLanternInPlayer(List<HandItem> allPlayerObjects)
+    private bool CheckWalkieInPlayer(List<HandItem> allPlayerObjects)
     {
         foreach (var item in allPlayerObjects)
         {
-            if (item is HandLanternItem)
+            if (item is HandWalkieItem)
                 return true;
         }
 

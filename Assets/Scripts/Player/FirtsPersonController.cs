@@ -94,6 +94,7 @@ public class FirtsPersonController : MonoBehaviour
     [SerializeField] private Vector3 interactionRayPoint = default;
     [SerializeField] private float interactionDistance = default;
     [SerializeField] private LayerMask interactionLayer = default;
+    [SerializeField] private GameObject itemsContainer = default;
     private Interactable currentInteractable;
 
     [Header("Footstep Parameters")]
@@ -118,15 +119,22 @@ public class FirtsPersonController : MonoBehaviour
 
     void Start()
     {
-        if (currentObject > - 1 && currentObject < allObjects.Count)
+        if (allObjects.Count > 0)
         {
-            activeObjeto = allObjects[currentObject];
+            if (currentObject > - 1 && currentObject < allObjects.Count)
+            {
+                activeObjeto = allObjects[currentObject];
+            } else
+            {
+                activeObjeto = allObjects[0];
+                currentObject = 0;
+            }
+            activeObjeto.gameObject.SetActive(true);
         } else
         {
-            activeObjeto = allObjects[0];
-            currentObject = 0;
+            currentObject = -1;
+            activeObjeto = null;
         }
-        activeObjeto.gameObject.SetActive(true);
     }
     private void OnEnable()
     {
@@ -186,7 +194,7 @@ public class FirtsPersonController : MonoBehaviour
 
     private void HandleUseItem()
     {
-        if (Input.GetKeyDown(useKey))
+        if (Input.GetKeyDown(useKey) && activeObjeto)
         {
             activeObjeto.UseItem(this);
         }
@@ -196,17 +204,31 @@ public class FirtsPersonController : MonoBehaviour
     {
         if (Input.GetKeyDown(switchObjectKey))
         {
-            activeObjeto.gameObject.SetActive(false);
-
-            currentObject++;
-
-            if (currentObject >= allObjects.Count)
+            if (activeObjeto)
             {
-                currentObject = 0;
+                activeObjeto.gameObject.SetActive(false);
             }
 
-            activeObjeto = allObjects[currentObject];
-            activeObjeto.gameObject.SetActive(true);
+            if (allObjects.Count == 0)
+            {
+                currentObject = -1;
+                activeObjeto = null;
+            }
+            else
+            {
+                currentObject++;
+
+                if (currentObject >= allObjects.Count)
+                {
+                    currentObject = -1;
+                    activeObjeto = null;
+                } else
+                {
+                    activeObjeto = allObjects[currentObject];
+                    activeObjeto.gameObject.SetActive(true);
+                }
+
+            }
         }
     }
 
@@ -300,7 +322,7 @@ public class FirtsPersonController : MonoBehaviour
         // Comprueba tecla de interacci�n y que el objeto se encuentre a la distancia definida
         if (Input.GetKeyDown(interactKey) && currentInteractable != null && Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hit, interactionDistance, interactionLayer))
         {
-            currentInteractable.OnInteract();
+            currentInteractable.OnInteract(itemsContainer, ref allObjects);
         }
     }
 
