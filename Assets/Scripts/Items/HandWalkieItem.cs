@@ -4,8 +4,21 @@ using UnityEngine;
 
 public class HandWalkieItem : HandItem
 {
+    public GameObject WalkieCanvas;
+    public GameObject InGameMenu;
+
     public override void UseItem(FirtsPersonController player)
     {
-        print("No action defined");
+        if(!WalkieCanvas.activeSelf && !InGameMenu.activeSelf)
+        {
+            WalkieCanvas.SetActive(true);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+        else
+        {
+            WalkieCanvas.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuInGame : MonoBehaviour
 {
     public GameObject inGameMenu;
+    public GameObject WalkieCanvas;
 
     public static bool GameIsPaused = false;
 
@@ -18,6 +19,8 @@ public class MenuInGame : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+            if (WalkieCanvas.activeSelf)
+                WalkieCanvas.SetActive(false);
             if (GameIsPaused)
             {
                 Resume();
@@ -36,6 +39,7 @@ public class MenuInGame : MonoBehaviour
         inGameMenu.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        Cursor.visible = false;
     }
 
     void Pause()
@@ -44,6 +48,7 @@ public class MenuInGame : MonoBehaviour
         inGameMenu.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        Cursor.visible = true;
     }
 
     public void GoMainMenu()
