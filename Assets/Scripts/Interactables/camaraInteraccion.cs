@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class camaraInteraccion : MonoBehaviour
 {
-    private int rango = 2;
+    private int rango = 3;
 
     public GameObject linterna;
     private float bateria = 100;
@@ -33,9 +33,18 @@ public class camaraInteraccion : MonoBehaviour
                 BarraBateria.instance.batteryText.text = "Bateria: " + bateria + "%";
             }
         }
+        else if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rango, LayerMask.GetMask("PanelLuz")))
+        {
+            InteractionText.instance.interText.text = "Presiona Click Izq para interactuar";
+            if(Input.GetMouseButtonDown(0))
+            {  
+                hit.transform.GetComponent<Interactable2>().Interact();
+            }
+        }
         else
+        {
             InteractionText.instance.interText.text = "";
-
+        }
     }
 
     private void OnDrawGizmos()
