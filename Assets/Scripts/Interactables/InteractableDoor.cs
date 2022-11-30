@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class InteractableDoor : Interactable
 {
+    [Header("Key Parameters")]
+    [SerializeField] private bool requireKey = false;
+
     [Header("Custom Sounds")]
     [SerializeField] private AudioClip openDoor = default;
     [SerializeField] private AudioClip closeDoor = default;
+    [SerializeField] private AudioClip lockedDoor = default;
 
     private bool isOpen = false;
     private bool canBeInteractedWith = true;
@@ -29,22 +33,36 @@ public class InteractableDoor : Interactable
             if(canBeInteractedWith)
             {
                 FirtsPersonController controller = FirtsPersonController.Instance;
+                if (requireKey && controller.HasKey)
+                {
+                    OpenDoor(controller);
+                } else if(!requireKey)
+                {
+                    OpenDoor(controller);
+                } else
+                {
+                    controller.PlayerAudioSource.PlayOneShot(lockedDoor);
+                }
 
-                isOpen = !isOpen;
-
-                Vector3 doorTransformDirection = transform.TransformDirection(Vector3.forward);
-                Vector3 playerTransformDirection = controller.transform.position - transform.position;
-
-                float dot = Vector3.Dot(doorTransformDirection, playerTransformDirection);
-
-                animation.SetFloat("dot", dot);
-                animation.SetBool("isOpen", isOpen);
             }
         }
         catch (System.Exception)
         {
             print("Error");
         }
+    }
+
+    private void OpenDoor(FirtsPersonController controller)
+    {
+        isOpen = !isOpen;
+
+        Vector3 doorTransformDirection = transform.TransformDirection(Vector3.forward);
+        Vector3 playerTransformDirection = controller.transform.position - transform.position;
+
+        float dot = Vector3.Dot(doorTransformDirection, playerTransformDirection);
+
+        animation.SetFloat("dot", dot);
+        animation.SetBool("isOpen", isOpen);
     }
 
     public void OpenDoorSound()

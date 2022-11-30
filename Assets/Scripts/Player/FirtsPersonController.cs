@@ -123,12 +123,15 @@ public class FirtsPersonController : MonoBehaviour
 
     private static FirtsPersonController _instance;
 
+    private bool _hasKey = false;
+
     private float GetCurrentOffset => isCrouching ? baseStepSpeed * crouchStepMultiplier : IsSprinting ? baseStepSpeed * sprintStepMultiplier : baseStepSpeed;
 
     // Propiedades
     public AudioSource PlayerAudioSource { get => playerAudioSource; }
     public AudioClip LanternClick { get => lanternClick; }
     public static FirtsPersonController Instance { get => _instance; }
+    public bool HasKey { get => _hasKey; set => _hasKey = value; }
 
     void Start()
     {

@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractablePanel : Interactable
+public class InteractableKey : Interactable
 {
-    [SerializeField]private encenderLuces luces;
+    [Header("Custom Sounds")]
+    [SerializeField] private AudioClip pickUpKey = default;
+
     public override void OnFocus()
     {
         print("Focus on " + gameObject.name);
@@ -12,7 +14,12 @@ public class InteractablePanel : Interactable
 
     public override void OnInteract(GameObject itemsContainer, ref List<HandItem> allPlayerObjects)
     {
-        luces.gameObject.SetActive(true);
+        FirtsPersonController controller = FirtsPersonController.Instance;
+
+        controller.HasKey = true;
+        controller.PlayerAudioSource.PlayOneShot(pickUpKey);
+
+        Destroy(this.gameObject);
     }
 
     public override void OnLoseFocus()
