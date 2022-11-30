@@ -20,10 +20,12 @@ public class camaraInteraccion : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rango, LayerMask.GetMask("Interact")))
         {
-            if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rango, LayerMask.GetMask("Interact")))
+            InteractionText.instance.interText.text = "Presiona E para recoger";
+            if(Input.GetKeyDown(KeyCode.E))
             {
+                //UnityEngine.Debug.Log("Hola");
                 linterna.GetComponent<InteractableLantern>().cantBateria += bateria;
                 hit.transform.GetComponent<Interactable2>().Interact();
 
@@ -31,6 +33,9 @@ public class camaraInteraccion : MonoBehaviour
                 BarraBateria.instance.batteryText.text = "Bateria: " + bateria + "%";
             }
         }
+        else
+            InteractionText.instance.interText.text = "";
+
     }
 
     private void OnDrawGizmos()
