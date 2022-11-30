@@ -9,47 +9,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class camaraInteraccion : MonoBehaviour
+namespace Assets.Scripts.Interactables
 {
-    private int rango = 3;
-
-    public GameObject linterna;
-    private float bateria = 100;
-
-    // Update is called once per frame
-    void Update()
+    public class camaraInteraccion : MonoBehaviour
     {
-        RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rango, LayerMask.GetMask("Interact")))
+        private int rango = 3;
+
+        public GameObject linterna;
+        private float bateria = 100;
+
+        // Update is called once per frame
+        void Update()
         {
-            InteractionText.instance.interText.text = "Presiona E para recoger";
-            if(Input.GetKeyDown(KeyCode.E))
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rango, LayerMask.GetMask("Interact")))
             {
-                //UnityEngine.Debug.Log("Hola");
-                linterna.GetComponent<InteractableLantern>().cantBateria += bateria;
-                hit.transform.GetComponent<Interactable2>().Interact();
+                InteractionText.instance.interText.text = "Presiona E para recoger";
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    //UnityEngine.Debug.Log("Hola");
+                    linterna.GetComponent<InteractableLantern>().cantBateria += bateria;
+                    hit.transform.GetComponent<Interactable2>().Interact();
 
-                BarraBateria.instance.batterySlider.value = bateria;
-                BarraBateria.instance.batteryText.text = "Bateria: " + bateria + "%";
+                    BarraBateria.instance.batterySlider.value = bateria;
+                    BarraBateria.instance.batteryText.text = "Bateria: " + bateria + "%";
+                }
+            }
+            else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rango, LayerMask.GetMask("PanelLuz")))
+            {
+                InteractionText.instance.interText.text = "Presiona Click Izq para interactuar";
+                if (Input.GetMouseButtonDown(0))
+                {
+                    hit.transform.GetComponent<Interactable2>().Interact();
+                }
+            }
+            else
+            {
+                InteractionText.instance.interText.text = "";
             }
         }
-        else if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rango, LayerMask.GetMask("PanelLuz")))
-        {
-            InteractionText.instance.interText.text = "Presiona Click Izq para interactuar";
-            if(Input.GetMouseButtonDown(0))
-            {  
-                hit.transform.GetComponent<Interactable2>().Interact();
-            }
-        }
-        else
-        {
-            InteractionText.instance.interText.text = "";
-        }
-    }
 
-    private void OnDrawGizmos()
-    {
-    Gizmos.color = Color.green;
-    Gizmos.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * rango);
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * rango);
+        }
     }
 }
