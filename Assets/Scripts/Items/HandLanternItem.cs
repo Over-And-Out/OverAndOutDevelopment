@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class HandLanternItem : HandItem
 {
-    private Light lanternLight;
-    public virtual void Awake()
-    {
-        lanternLight = GetComponentInChildren<Light>();
-    }
+    public Light lanternLight;
+    //public boolean isEnabled;
 
     public override void UseItem(FirtsPersonController player)
     {

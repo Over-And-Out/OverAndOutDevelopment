@@ -4411,12 +4411,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8168618098744255468, guid: 8984f9b610e658a43acb9a1d08254c7d, type: 3}
       propertyPath: simulationSpeed
-      value: 3
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8168618098744255468, guid: 8984f9b610e658a43acb9a1d08254c7d, type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
-      value: 14.76
+      value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8168618098744255471, guid: 8984f9b610e658a43acb9a1d08254c7d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 8168618099268235353, guid: 8984f9b610e658a43acb9a1d08254c7d, type: 3}
       propertyPath: m_Name
       value: Lluvia
@@ -4431,7 +4435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8168618099268235358, guid: 8984f9b610e658a43acb9a1d08254c7d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.05
+      value: 15.23
       objectReference: {fileID: 0}
     - target: {fileID: 8168618099268235358, guid: 8984f9b610e658a43acb9a1d08254c7d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4467,12 +4471,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8168618099595478624, guid: 8984f9b610e658a43acb9a1d08254c7d, type: 3}
       propertyPath: simulationSpeed
-      value: 3
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8168618099595478624, guid: 8984f9b610e658a43acb9a1d08254c7d, type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
-      value: 15.08
+      value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 8168618099595478627, guid: 8984f9b610e658a43acb9a1d08254c7d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8984f9b610e658a43acb9a1d08254c7d, type: 3}
 --- !u!1 &1617499604

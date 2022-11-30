@@ -15,7 +15,7 @@ public abstract class Interactable : MonoBehaviour
     {
         gameObject.layer = INTERACTABLE_LAYER;
     }
-
+    
     public abstract void OnInteract(GameObject itemsContainer, ref List<HandItem> allPlayerObjects);
     public abstract void OnFocus();
     public abstract void OnLoseFocus();
