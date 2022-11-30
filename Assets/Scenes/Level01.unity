@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.26713863, g: 0.2237257, b: 0.21440765, a: 1}
+  m_IndirectSpecularColor: {r: 0.26714343, g: 0.22371909, b: 0.21440834, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3203,11 +3203,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 643723bebd122ec41a301fb4917911e0, type: 3}
---- !u!4 &706202981 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1893486744694029563, guid: fe44196c5e4e1444db4df3069ca7c43e, type: 3}
-  m_PrefabInstance: {fileID: 1997948294}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &759792158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3623,7 +3618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8168618099268235358, guid: 8984f9b610e658a43acb9a1d08254c7d, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 8168618099268235358, guid: 8984f9b610e658a43acb9a1d08254c7d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9730,18 +9725,6 @@ PrefabInstance:
     - target: {fileID: 1893486744694029563, guid: fe44196c5e4e1444db4df3069ca7c43e, type: 3}
       propertyPath: m_RootOrder
       value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 1893486744694029563, guid: fe44196c5e4e1444db4df3069ca7c43e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1893486744694029563, guid: fe44196c5e4e1444db4df3069ca7c43e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1893486744694029563, guid: fe44196c5e4e1444db4df3069ca7c43e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1893486744694029563, guid: fe44196c5e4e1444db4df3069ca7c43e, type: 3}
       propertyPath: m_LocalPosition.x
