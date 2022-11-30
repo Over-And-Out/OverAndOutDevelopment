@@ -121,11 +121,14 @@ public class FirtsPersonController : MonoBehaviour
     [Header("Custom Sounds")]
     [SerializeField] private AudioClip lanternClick = default;
 
+    private static FirtsPersonController _instance;
+
     private float GetCurrentOffset => isCrouching ? baseStepSpeed * crouchStepMultiplier : IsSprinting ? baseStepSpeed * sprintStepMultiplier : baseStepSpeed;
 
     // Propiedades
     public AudioSource PlayerAudioSource { get => playerAudioSource; }
     public AudioClip LanternClick { get => lanternClick; }
+    public static FirtsPersonController Instance { get => _instance; }
 
     void Start()
     {
@@ -159,6 +162,7 @@ public class FirtsPersonController : MonoBehaviour
 
     void Awake()
     {
+        _instance = this;
         playerCamera = GetComponentInChildren<Camera>();
         controller = GetComponent<CharacterController>();
 
