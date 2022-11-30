@@ -8,6 +8,8 @@ TagManager:
   - Footsteps/METAL
   - Footsteps/WOOD
   - Footsteps/CONCRETE
+  - Door
+  - TriggerDoor
   layers:
   - Default
   - TransparentFX
