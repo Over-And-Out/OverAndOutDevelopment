@@ -554,8 +554,10 @@ MonoBehaviour:
   prefab: {fileID: 1244075271632265240}
   itemPosition: {x: 0, y: 0, z: 0}
   itemRotation: {x: 0, y: 0, z: 0, w: 0}
+  requireKey: 0
   openDoor: {fileID: 8300000, guid: ac52591611456dc47a2d5754c944cc43, type: 3}
   closeDoor: {fileID: 8300000, guid: 0888a575809174044a8bc64a01a5655d, type: 3}
+  lockedDoor: {fileID: 8300000, guid: 0fc8c887f2f9e74458020c4af90498cc, type: 3}
 --- !u!1001 &4058886076695446946
 PrefabInstance:
   m_ObjectHideFlags: 0
