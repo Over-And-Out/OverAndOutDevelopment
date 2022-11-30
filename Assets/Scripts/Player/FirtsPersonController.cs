@@ -22,6 +22,7 @@ public class FirtsPersonController : MonoBehaviour
     [SerializeField] private bool canUseHeadbob = true;
     [SerializeField] private bool canInteract = true;
     [SerializeField] private bool useFootsteps = true;
+    //[SerializeField] private bool canHide = false;
 
     [Header("Controls")]
     [SerializeField] private KeyCode sprintKey = KeyCode.LeftShift;
@@ -107,6 +108,15 @@ public class FirtsPersonController : MonoBehaviour
     [SerializeField] private AudioClip[] grassClips = default;
     [SerializeField] private AudioClip[] concreteClips = default;
     private float footstepTimer = 0;
+    /*
+    [Header("Hide Options")]
+    [SerializeField]private Transform dentro;
+    [SerializeField]private Transform fuera;
+    [SerializeField]private float tiempo;
+    public bool entra;
+    private bool sale;
+    private Transform playerT;
+    */
 
     [Header("Custom Sounds")]
     [SerializeField] private AudioClip lanternClick = default;
@@ -119,6 +129,7 @@ public class FirtsPersonController : MonoBehaviour
 
     void Start()
     {
+
         if (allObjects.Count > 0)
         {
             if (currentObject > - 1 && currentObject < allObjects.Count)
@@ -183,6 +194,12 @@ public class FirtsPersonController : MonoBehaviour
                 HandleInteractionCheck();
                 HandleInteractionInput();
             }
+            /*
+            if (canHide) 
+            {
+                Hide();
+            }
+            */
 
             HandleUseItem();
 
@@ -453,4 +470,44 @@ public class FirtsPersonController : MonoBehaviour
         activeObjeto = allObjects[currentObject];
         activeObjeto.gameObject.SetActive(true);
     }
+
+
+    /*
+    //Esconderse
+    private void Hide()
+    {
+        if (Input.GetKeyDown(interactKey) && currentInteractable != null && Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hit, interactionDistance, interactionLayer))
+        {
+            canHide = true;
+        }
+
+        if(canHide == true)
+        {
+            playerT.position = UnityEngine.Vector3.Lerp(playerT.position, dentro.position, tiempo * Time.deltaTime);
+            playerT.rotation = UnityEngine.Quaternion.Lerp(playerT.rotation, dentro.rotation, tiempo * Time.deltaTime);
+            canHide = false;
+            sale = true;
+        }
+
+        if(sale == true) 
+        {
+            playerT.position = UnityEngine.Vector3.Lerp(playerT.position, fuera.position, tiempo * Time.deltaTime);
+            playerT.rotation = UnityEngine.Quaternion.Lerp(playerT.rotation, fuera.rotation, tiempo * Time.deltaTime);
+            StartCoroutine(finEscondite());
+        }
+    }
+    private void puedeHide()
+    {
+        if (Input.GetKeyDown(interactKey) && currentInteractable != null && Physics.Raycast(playerCamera.ViewportPointToRay(interactionRayPoint), out RaycastHit hit, interactionDistance, interactionLayer))
+        {
+            canHide = true;
+        }
+        else canHide = false;
+    }
+    private IEnumerator finEscondite()
+    {
+        yield return new WaitForSeconds(2);
+        sale = false;
+    }
+    */
 }

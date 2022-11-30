@@ -1,0 +1,41 @@
+using System.Net.Http;
+using System.Net.WebSockets;
+using System.Net;
+using System.Diagnostics;
+using System;
+using System.Runtime.CompilerServices;
+using System.Net.NetworkInformation;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class camaraInteraccion : MonoBehaviour
+{
+    private int rango = 2;
+
+    public GameObject linterna;
+    private float bateria = 100;
+
+    // Update is called once per frame
+    void Update()
+    {
+        RaycastHit hit;
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rango, LayerMask.GetMask("Interact")))
+            {
+                linterna.GetComponent<InteractableLantern>().cantBateria += bateria;
+                hit.transform.GetComponent<Interactable2>().Interact();
+
+                BarraBateria.instance.batterySlider.value = bateria;
+                BarraBateria.instance.batteryText.text = "Bateria: " + bateria + "%";
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+    Gizmos.color = Color.green;
+    Gizmos.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * rango);
+    }
+}
