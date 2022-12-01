@@ -6,6 +6,12 @@ using UnityEngine.AI;
 
 public class MonsterBehaviour : MonoBehaviour
 {
+    [SerializeField] private AudioSource playerAudioSource = default;
+    public AudioSource PlayerAudioSource { get => playerAudioSource; }
+     [SerializeField] private AudioClip sonido = default;
+    public AudioClip sonidoIni { get => sonido; }
+
+    public deathCanvas canvasMuerte;
     public GameObject playerRef;
     public NavMeshAgent agent;
     public FieldOfView visionLejana;
@@ -68,7 +74,10 @@ public class MonsterBehaviour : MonoBehaviour
                     agent.SetDestination(playerRef.transform.position);
                   }
                 break;
-            case MonsterStates.Atacando: FindObjectOfType<GameManager>().EndGame();
+            case MonsterStates.Atacando: 
+                FindObjectOfType<GameManager>().EndGame();
+                PlayerAudioSource.PlayOneShot(sonido);
+                canvasMuerte.gameObject.SetActive(true);
                 break;
             default:   
                 break;

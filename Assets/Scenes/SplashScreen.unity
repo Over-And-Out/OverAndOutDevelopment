@@ -346,7 +346,7 @@ MonoBehaviour:
   sharedProfile: {fileID: 11400000, guid: 03bfb039cc636ed47aeb24ecf57dcbeb, type: 2}
   isGlobal: 1
   blendDistance: 0
-  weight: 1
+  weight: 0.799
   priority: 0
 --- !u!4 &629592807
 Transform:
@@ -453,7 +453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661292211}
   m_LocalRotation: {x: -0, y: -0.18915717, z: -0, w: 0.9819468}
-  m_LocalPosition: {x: 1.08, y: 3.136, z: 12.38}
+  m_LocalPosition: {x: 1.04, y: 3.136, z: 12.38}
   m_LocalScale: {x: 9.663228, y: 6.686417, z: 5.7642493}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -5,6 +5,10 @@ using UnityEngine;
 public class InteractablePanel : Interactable
 {
     [SerializeField]private encenderLuces luces;
+    [SerializeField] private AudioSource playerAudioSource = default;
+    public AudioSource PlayerAudioSource { get => playerAudioSource; }
+     [SerializeField] private AudioClip sonido = default;
+    public AudioClip sonidoIni { get => sonido; }
     public override void OnFocus()
     {
         print("Focus on " + gameObject.name);
@@ -12,6 +16,7 @@ public class InteractablePanel : Interactable
 
     public override void OnInteract(GameObject itemsContainer, ref List<HandItem> allPlayerObjects)
     {
+        PlayerAudioSource.PlayOneShot(sonido);
         luces.gameObject.SetActive(true);
     }
 

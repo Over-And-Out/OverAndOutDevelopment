@@ -12,11 +12,20 @@ public class MenuWalkie : MonoBehaviour
     public GameObject Subtitulos;
     public TMP_Text TextoSubtitulos;
 
+    [SerializeField] private AudioSource playerAudioSource = default;
+    public AudioSource PlayerAudioSource { get => playerAudioSource; }
+    [SerializeField] private AudioClip sonidoInicio = default;
+    [SerializeField] private AudioClip sonidoFin = default;
+    public AudioClip sonidoIni { get => sonidoInicio; }
+    public AudioClip sonidoF { get => sonidoFin; }
+
     public void UbicacionMonstruo()
     {
         
         if (!actionRunning)
         {
+
+            PlayerAudioSource.PlayOneShot(sonidoIni);
             ActivarSubtitulos();
             CambiarTextoSubtitulos("Timmy: " + DialogosTimmyUbicacionMonstruo());
             actionRunning = true;
@@ -24,6 +33,7 @@ public class MenuWalkie : MonoBehaviour
             Invoke("RespuestaUbicacion", 2);
         }
         WalkieCanvas.SetActive(false);
+        PlayerAudioSource.PlayOneShot(sonidoF);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
