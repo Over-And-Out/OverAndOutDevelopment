@@ -15,6 +15,8 @@ public class InteractableDoor : Interactable
     private bool isOpen = false;
     private bool canBeInteractedWith = true;
     private Animator animation;
+    public GameObject monstruo;
+
 
     private void Start()
     {
@@ -65,7 +67,23 @@ public class InteractableDoor : Interactable
         animation.SetBool("isOpen", isOpen);
     }
 
-    public void OpenDoorSound()
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Monstruo"))
+        {
+            isOpen = !isOpen;
+
+            Vector3 doorTransformDirection = transform.TransformDirection(Vector3.forward);
+            Vector3 monsterTransformDirection = monstruo.transform.position - transform.position;
+
+            float dot = Vector3.Dot(doorTransformDirection, monsterTransformDirection);
+
+            animation.SetFloat("dot", dot);
+            animation.SetBool("isOpen", isOpen);
+        }
+    }
+
+        public void OpenDoorSound()
     {
         FirtsPersonController controller = FirtsPersonController.Instance;
         controller.PlayerAudioSource.PlayOneShot(openDoor);

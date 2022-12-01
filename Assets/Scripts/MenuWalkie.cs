@@ -31,7 +31,11 @@ public class MenuWalkie : MonoBehaviour
     {
         if (!actionRunning)
         {
+            ActivarSubtitulos();
+            CambiarTextoSubtitulos("Timmy: Que hago ahora?");
+            actionRunning = true;
 
+            Invoke("RespuestaTarea", 2);
         }
         WalkieCanvas.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
@@ -42,15 +46,30 @@ public class MenuWalkie : MonoBehaviour
         float distanciaMasCercana = 100000;
         for (int i = 0; i < waypoints.Length; i++)
         {
-            float distancia = Vector3.Distance(waypoints[i].position, monster.transform.position);
-            if (distancia < distanciaMasCercana)
+            float distancia;
+            if (!(Mathf.Abs(waypoints[i].position.y - monster.transform.position.y) < 3)) 
             {
-                masCercana = i;
-                distanciaMasCercana = distancia;
+                distancia = 100000;
             }
+            else
+            {
+                distancia = Vector3.Distance(waypoints[i].position, monster.transform.position);
+                if (distancia < distanciaMasCercana)
+                {
+                    masCercana = i;
+                    distanciaMasCercana = distancia;
+                }
+            }
+            
         }
         CambiarTextoSubtitulos("Joel: El monstruo esta en " + waypoints[masCercana].name);
         Invoke("DesactivarSubtitulos",2);
+    }
+
+    void RespuestaTarea()
+    {
+        CambiarTextoSubtitulos("Joel: Intenta encender las luces");
+        Invoke("DesactivarSubtitulos", 2);
     }
 
     void ActivarSubtitulos()
