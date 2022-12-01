@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InteractablePanel : Interactable
 {
+    public objetivoCanvas objetivo;
+
     [SerializeField]private encenderLuces luces;
     [SerializeField] private AudioSource playerAudioSource = default;
     public AudioSource PlayerAudioSource { get => playerAudioSource; }
@@ -18,6 +20,7 @@ public class InteractablePanel : Interactable
     {
         PlayerAudioSource.PlayOneShot(sonido);
         luces.gameObject.SetActive(true);
+        objetivo.gameObject.SetActive(true);
     }
 
     public override void OnLoseFocus()
