@@ -72,7 +72,7 @@ public class MenuWalkie : MonoBehaviour
             }
             
         }
-        CambiarTextoSubtitulos("Joel: El monstruo esta en " + waypoints[masCercana].name);
+        CambiarTextoSubtitulos("Joel: " + DialogosJoelUbicacionMonstruo(waypoints[masCercana].name);
         Invoke("DesactivarSubtitulos",2);
     }
 
@@ -101,13 +101,25 @@ public class MenuWalkie : MonoBehaviour
     //Selecciona aleatoriamente una frase para solicitar la ubicacion del monstruo a Joel
     string DialogosTimmyUbicacionMonstruo()
     {
-        int nAleatorio = UnityEngine.Random.Range(1, 4);
+        int nAleatorio = UnityEngine.Random.Range(1, 5);
         switch (nAleatorio)
         {
             case 1: return "Sabes donde esta el monstruo?";
             case 2: return "Ves al monstruo?"; 
             case 3: return "Joel lo he perdido!! Dime donde esta!!"; 
             case 4: return "Joel dime la posicion del monstruo!!";
+            default: return "";
+        }
+    }
+
+    string DialogosJoelUbicacionMonstruo(string ubicacion)
+    {
+        int nAleatorio = UnityEngine.Random.Range(1, 4);
+        switch (nAleatorio)
+        {
+            case 1: return "El monstruo esta en " + ubicacion;
+            case 2: return "Esta en " + ubicacion + "corre !!";
+            case 3: return "No lo veo!!";
             default: return "";
         }
     }
