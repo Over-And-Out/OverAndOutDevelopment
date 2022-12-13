@@ -5284,6 +5284,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3643730547917966750, guid: 008b01dddd7a0f64cb395fc8dbcaf1bf, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3643730547917966750, guid: 008b01dddd7a0f64cb395fc8dbcaf1bf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3643730548105708148, guid: 008b01dddd7a0f64cb395fc8dbcaf1bf, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5379,6 +5387,10 @@ PrefabInstance:
     - target: {fileID: 3643730548417086307, guid: 008b01dddd7a0f64cb395fc8dbcaf1bf, type: 3}
       propertyPath: m_Name
       value: HealthCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3643730548550234746, guid: 008b01dddd7a0f64cb395fc8dbcaf1bf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 008b01dddd7a0f64cb395fc8dbcaf1bf, type: 3}
@@ -6371,6 +6383,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1273022465430849029, guid: 0211f53a159a45c409d48a3b181ad9c9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1273022467210330801, guid: 0211f53a159a45c409d48a3b181ad9c9, type: 3}
       propertyPath: m_Enabled
       value: 0
