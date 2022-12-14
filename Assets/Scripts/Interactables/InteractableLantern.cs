@@ -11,9 +11,8 @@ public class InteractableLantern : Interactable
 
     public void Start() 
     {
-        //BarraBateria.instance.batterySlider.maxValue = 100;
-        //BarraBateria.instance.batterySlider.value = cantBateria;
-        //BarraBateria.instance.batteryText.text = "Bateria: " + (int)cantBateria + "%";
+        BarraBateria.instance.batterySlider.maxValue = 100;
+      
     }
 
     public override void Awake()
@@ -30,8 +29,7 @@ public class InteractableLantern : Interactable
         if(luz.enabled == true && cantBateria > 0)  
         {
             cantBateria -= perdidaBateria * Time.deltaTime;
-            //BarraBateria.instance.batterySlider.value = cantBateria;
-            //BarraBateria.instance.batteryText.text = "Bateria: " + valorBateria + "%";
+            
         }
         if(cantBateria == 0)
             luz.intensity = 0f;

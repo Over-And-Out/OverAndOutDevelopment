@@ -5209,21 +5209,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f18ebd9218a6fa6488a7c92f84220c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bateria: 6
-  numOfbateria: 6
-  bateriasprite:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  bateriaLlena: {fileID: 21300000, guid: 1f071c5c9478c0c42baab49d2a4b30ca, type: 3}
-  bateriaMedioLlena: {fileID: 21300000, guid: 2b8082c6946f971468f4a4a801fe290b, type: 3}
-  bateriaMitad: {fileID: 21300000, guid: 42fef937966ea7b478466676d8f96705, type: 3}
-  bateriaMedioVacia: {fileID: 21300000, guid: 62afaca516fe07c49b9d20295afb750a, type: 3}
-  bateriaCasiVacia: {fileID: 21300000, guid: 912ce13570450af4d9fa4f9de4fb07a7, type: 3}
-  bateriaVacia: {fileID: 21300000, guid: aafaaee986b19ad45b41c760b0cb936d, type: 3}
+  barrabateria: 0
+  numOfbateria: 0
+  bateria: []
+  bateriaLlena: {fileID: 0}
+  bateriaMedioLlena: {fileID: 0}
+  bateriaMitad: {fileID: 0}
+  bateriaMedioVacia: {fileID: 0}
+  bateriaCasiVacia: {fileID: 0}
+  bateriaVacia: {fileID: 0}
 --- !u!1 &1056977998
 GameObject:
   m_ObjectHideFlags: 0
@@ -5809,6 +5803,32 @@ MonoBehaviour:
   luces: {fileID: 887746465}
   playerAudioSource: {fileID: 700612426}
   sonido: {fileID: 8300000, guid: 125ea4f6b0d39734db4cbd58df28f013, type: 3}
+--- !u!1 &1205005467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8337601510775402223, guid: 6a08f68ab2732a142ba6d70b9a17aa87, type: 3}
+  m_PrefabInstance: {fileID: 6047843499992969838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1205005469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205005467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18ebd9218a6fa6488a7c92f84220c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barrabateria: 0
+  numOfbateria: 0
+  bateria: []
+  bateriaLlena: {fileID: 0}
+  bateriaMedioLlena: {fileID: 0}
+  bateriaMitad: {fileID: 0}
+  bateriaMedioVacia: {fileID: 0}
+  bateriaCasiVacia: {fileID: 0}
+  bateriaVacia: {fileID: 0}
 --- !u!1 &1207946936
 GameObject:
   m_ObjectHideFlags: 0
@@ -6786,6 +6806,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 58268aae288aa0942a07ca1bd270f299, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bea82c2a612ef249aeea0a7f324dc9d, type: 3}
+--- !u!1 &1432057539 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4775203940052377289, guid: 6a08f68ab2732a142ba6d70b9a17aa87, type: 3}
+  m_PrefabInstance: {fileID: 6047843499992969838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1442951825
 GameObject:
   m_ObjectHideFlags: 0
@@ -28565,6 +28590,32 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4775203940052377295, guid: 6a08f68ab2732a142ba6d70b9a17aa87, type: 3}
   m_PrefabInstance: {fileID: 6047843499992969838}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1273022465964141733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432057539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18ebd9218a6fa6488a7c92f84220c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barrabateria: 10
+  numOfbateria: 6
+  bateria:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bateriaLlena: {fileID: 2051065458, guid: e1c5af46641be5a418a360c5ddda1a5e, type: 3}
+  bateriaMedioLlena: {fileID: 890580667, guid: e1c5af46641be5a418a360c5ddda1a5e, type: 3}
+  bateriaMitad: {fileID: 872473447, guid: e1c5af46641be5a418a360c5ddda1a5e, type: 3}
+  bateriaMedioVacia: {fileID: 1635108002, guid: e1c5af46641be5a418a360c5ddda1a5e, type: 3}
+  bateriaCasiVacia: {fileID: -405986197, guid: e1c5af46641be5a418a360c5ddda1a5e, type: 3}
+  bateriaVacia: {fileID: 79286379, guid: e1c5af46641be5a418a360c5ddda1a5e, type: 3}
 --- !u!1001 &2319544746816622495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28857,7 +28908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2172350283562248250, guid: 6a08f68ab2732a142ba6d70b9a17aa87, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -834
+      value: -849
       objectReference: {fileID: 0}
     - target: {fileID: 2172350283562248250, guid: 6a08f68ab2732a142ba6d70b9a17aa87, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -28967,6 +29018,10 @@ PrefabInstance:
       propertyPath: batterySlider
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6485256755057250922, guid: 6a08f68ab2732a142ba6d70b9a17aa87, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2051065458, guid: e1c5af46641be5a418a360c5ddda1a5e, type: 3}
     m_RemovedComponents:
     - {fileID: 6047843500163428558, guid: 6a08f68ab2732a142ba6d70b9a17aa87, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6a08f68ab2732a142ba6d70b9a17aa87, type: 3}
