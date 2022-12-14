@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class camaraInteraccion : MonoBehaviour
 {
-    private int rango = 2;
+    private int rango = 3;
 
     public GameObject linterna;
     private float bateria = 100;
