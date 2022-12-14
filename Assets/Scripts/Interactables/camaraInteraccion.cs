@@ -31,8 +31,8 @@ namespace Assets.Scripts.Interactables
                     linterna.GetComponent<InteractableLantern>().cantBateria += bateria;
                     hit.transform.GetComponent<Interactable2>().Interact();
 
-                    BarraBateria.instance.batterySlider.value = bateria;
-                    BarraBateria.instance.batteryText.text = "Bateria: " + bateria + "%";
+                    //BarraBateria.instance.batterySlider.value = bateria;
+                    //BarraBateria.instance.batteryText.text = "Bateria: " + bateria + "%";
                 }
             }
             else if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rango, LayerMask.GetMask("PanelLuz")))

@@ -3762,7 +3762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 386469244791406314, guid: b821505031a6521468bfdce185065b4e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 386469244791406314, guid: b821505031a6521468bfdce185065b4e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5197,6 +5197,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linterna: {fileID: 172886452}
+--- !u!114 &1055148451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055148444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f18ebd9218a6fa6488a7c92f84220c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bateria: 6
+  numOfbateria: 6
+  bateriasprite:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bateriaLlena: {fileID: 21300000, guid: 1f071c5c9478c0c42baab49d2a4b30ca, type: 3}
+  bateriaMedioLlena: {fileID: 21300000, guid: 2b8082c6946f971468f4a4a801fe290b, type: 3}
+  bateriaMitad: {fileID: 21300000, guid: 42fef937966ea7b478466676d8f96705, type: 3}
+  bateriaMedioVacia: {fileID: 21300000, guid: 62afaca516fe07c49b9d20295afb750a, type: 3}
+  bateriaCasiVacia: {fileID: 21300000, guid: 912ce13570450af4d9fa4f9de4fb07a7, type: 3}
+  bateriaVacia: {fileID: 21300000, guid: aafaaee986b19ad45b41c760b0cb936d, type: 3}
 --- !u!1 &1056977998
 GameObject:
   m_ObjectHideFlags: 0
