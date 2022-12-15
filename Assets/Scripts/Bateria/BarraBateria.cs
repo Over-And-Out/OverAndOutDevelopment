@@ -16,7 +16,7 @@ public class BarraBateria : MonoBehaviour
     public Sprite bateriaCasiVacia;
     public Sprite bateriaVacia;
 
-    void Update(){
+   /* void Update(){
        
        for (int i = 0; i < bateriasprite.Length; i++){
             
@@ -46,6 +46,6 @@ public class BarraBateria : MonoBehaviour
                 bateriasprite[i].enabled = false;
             }
        }
-    }
+    }*/
 
 }
