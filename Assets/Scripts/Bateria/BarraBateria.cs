@@ -2,37 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BarraBateria : MonoBehaviour
 {
-    public static barrabateria instance;
-    public int numOfbateria;
+    public static BarraBateria instance;
 
-    public Image[] bateria;
-    public Sprite bateriaLlena;
-    public Sprite bateriaMedioLlena;
-    public Sprite bateriaMitad;
-    public Sprite bateriaMedioVacia;
-    public Sprite bateriaCasiVacia;
-    public Sprite bateriaVacia;
+    public Slider batterySlider;
 
-    void Update(){
-
-    if(barrabateria > numOfbateria){
-        barrabateria = numOfbateria;
+    // Start is called before the first frame update
+    void Awake()
+    {
+        instance = this;
     }
-
-    for(int i = 0; i < barrabateria.Lenght; i++){
-        
-    if(i < barrabateria){
-        bateria[i].sprite = bateriaLlena;
-    }
-        
-
-    }
-   }
-
-    
-
-
 }
